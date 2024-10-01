@@ -1,0 +1,81 @@
+<head>
+    <title>
+        Bubbles
+    </title>
+</head>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .container
+    {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:    "head head"
+                                "user user"
+                                "byid rand";
+        border: 3px blue solid;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .header
+    {
+        width: 100%;
+        grid-area: head;
+        font-size:larger;
+        text-align: center;
+    }
+
+    .user{
+            grid-area: user;
+            border-bottom: 3px;
+            border-color: white;
+            border-style: hidden hidden solid hidden;
+            font-size: small;
+            text-align: right;
+        }
+    
+    .byid
+    {
+        grid-area: byid;
+        border-right: 3px solid white ;
+        padding: 5px;
+        padding-left: 0px;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .rand
+    {
+        grid-area: rand;
+        padding: 5px;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .link
+    {
+        text-decoration: none;
+        color: lightblue;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class=header><b>Bubbles</b></div>
+        <div class="user">{{usertext}}
+            <a class="link" href={{loginlink}}>{{logintext}}</a> |
+            <a class="link" href='newpost'>New Post</a></div>
+        <div class="byid">Recent Posts{{recent|safe}}</div>
+        <div class="rand">Random Posts{{random|safe}}<div>
+    </div>
+</body>
+</html>

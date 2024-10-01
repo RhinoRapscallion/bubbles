@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>
+            {{title|safe}}
+        </title>
+    </head>
+    <style>
+        body {
+            display: grid;
+            row-gap: 3px;
+            grid-template-columns: auto;
+            background-color: black;
+            color: white;
+        }
+        .text{
+            white-space: pre-wrap;
+            grid-area: 'text';
+        }
+        .title{
+            grid-area: 'title';
+            font-size: large;
+            word-wrap: break-word;
+            word-break: break-all;
+            text-align: center;
+            text-decoration: none;
+        }
+        .author{
+            grid-area: 'author';
+            border-bottom: 3px;
+            border-color: white;
+            border-style: hidden hidden solid hidden;
+            font-size: small;
+            text-align: right;
+        }
+
+        .postcontainer{
+            display: grid;
+            grid-template-areas:    'header'
+                                    'title'
+                                    'author'
+                                    'text';
+            border: 3px solid blue;
+            padding: 5px;
+        }
+
+        .commentcontainer{
+            display: grid;
+            grid-template-columns: auto;
+            border: 3px solid blue;
+            padding: 5px;
+            row-gap: 3px;
+        }
+
+        .comment
+        {
+            display: grid;
+            grid-template-rows: min-content auto;
+            grid-template-columns:auto;
+            height: min-content;
+            border-left: 3px solid white;
+            padding: 5px;
+        }
+
+        .commenttext
+        {
+            white-space: pre-wrap;
+            font-size: small;
+            padding: 5px;
+            height: min-content;
+            
+        }
+
+        .commentinput
+        {
+            width: 99%;
+            resize: vertical;
+            background-color: black;
+            color: white;
+            font-family: inherit;
+            font-size: small;
+            margin: 5px;
+        }
+
+        .commentsubmit
+        {
+            margin-right: 5px;
+            text-align: right;
+        }
+
+        .link
+        {
+        text-decoration: none;
+        color: lightblue;
+        }
+        .header
+        {
+            font-size: larger;
+            padding: 5px;
+            padding-bottom: 20px;
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            grid-area: "header";
+        } 
+
+    </style>
+    <body>
+        <div class="postcontainer">
+            <a href="/" class="header"><b>Bubbles</b></a>
+            <div class="title">{{title|safe}}</div>
+            <div class="author">by: {{author|safe}}</div>
+            <div class="text">{{content|safe}}</div>
+        </div>
+        <div class="commentcontainer">
+            <form method="post" action="/comment">
+                <label for="commentcontent" class="commenttext">Commenting as {{user|safe}} | <a class="link" href={{loginlink}}>{{logintext}}</a></label>
+                <textarea required class="commentinput" type="text" id="commentcontent" name="body">{{comment}}</textarea>
+                <div class="commentsubmit"><input type="submit" name="submit" value="Comment"></div>
+            </form>
+            {{comments|safe}}
+        </div>
+    </body>
+</html>

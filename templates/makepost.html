@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>
+            {{title}}
+        </title>
+    </head>
+    <style>
+        .link
+        {
+            text-decoration: none;
+            color: lightblue;
+        }
+        body {
+            background-color: black;
+            color: white;
+        }
+        .text{
+            white-space: pre-wrap;
+            grid-area: 'text';
+        }
+        .title{
+            grid-area: 'title';
+            font-size: large;
+            word-wrap: break-word;
+            word-break: break-all;
+            text-align: center;
+        }
+        .author{
+            grid-area: 'author';
+            border-bottom: 3px;
+            border-color: white;
+            border-style: hidden hidden solid hidden;
+            font-size: small;
+            text-align: right;
+        }
+
+        .bodyinput
+        {
+            width: 100%;
+            height: 250;
+            resize: vertical;
+            background-color: black;
+            color: white;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .titleinput
+        {
+            background-color: black;
+            color: white;
+            font-family: inherit;
+            font-size: inherit;
+            width: 90%
+        }
+
+        .submit
+        {
+            text-align: right;
+        }
+
+        .container{
+            display: grid;
+            grid-template-areas:    'title'
+                                    'author'
+                                    'text';
+            border: 3px solid blue;
+            padding: 5px;
+        }
+    </style>
+    <body>
+        <a href="/"><div style="width: 100%; text-decoration: none; text-align: center; color: white;"><h3>Bubbles</h3></div></a>
+        <div class="container">
+            <form action='/newpost' method='POST' autocomplete="off">
+                <div class="title"><label for='title'>Title:</label><input required class="titleinput" type='text' id='title' name='title' value='{{posttitle}}'></div>
+                <div class="author">by: {{author}} | <a class= "link" href="{{loginlink}}">{{logintext}}</a></div>
+                <div class="text"><textarea required class='bodyinput' type='text' id='body' name='body'>{{body}}</textarea></div>
+                <div class="submit"><input type="submit" value="Post"></div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>
+            {{title}}
+        </title>
+    </head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .text{
+            white-space: pre-wrap;
+            grid-area: 'text';
+        }
+        .title{
+            grid-area: 'title';
+            font-size: large;
+            text-align: center;
+            border-bottom: 5px;
+            border-bottom-style: solid;
+            border-color: white;
+            margin: 10px;
+        }
+        .name, .psk {
+            text-align: center;
+            margin: 3px;
+        }
+
+        .message
+        {
+            color: red;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        .submit
+        {
+            text-align: center;
+            margin: 3px;
+        }
+
+        .reg
+        {
+            font-size: small;
+            text-align: center;
+        }
+
+        .container{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            display: grid;
+            min-width: 40%;
+            min-height: 40%;
+            border: 3px solid blue;
+            padding: 5px;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <body>
+        <a href="/"><div style="width: 100%; text-decoration: none; text-align: center; color: white;"><h3>Bubbles</h3></div></a>
+        <div class="container">
+            <div class="title">{{title}}</div>
+            <form action={{action}} method='POST' autocomplete="off">
+                <div class="name">
+                    <label for='user'>Username:</label><br>
+                    <input type='username' id='user' name='user'>
+                </div>
+                <div class="psk">
+                    <label for='psk'>password:</label><br>
+                    <input type='password' id='psk' name='psk'></input><br>
+                </div>
+                <div class="submit">
+                    <button type="button"><a style="text-decoration: none; color:black" href="/logout">Cancel</a></button>
+                    <input class="btn" type='submit' value='{{title}}'>
+                </div>
+                <div class = message>{{message}}</div>
+                <div {{hideRtext}} class = reg>Not a user yet? <a style="text-decoration: none; color: lightblue;" href="/register">Register</a></div>
+            </form>
+        </div>
+    </body>
+</html>
