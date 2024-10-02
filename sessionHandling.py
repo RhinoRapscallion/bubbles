@@ -25,6 +25,8 @@ class sessionHandler():
     def __init__(self, jwt_secret: str, passwd_db: str):
         self.secret = jwt_secret
         self.db = passwd_db
+
+        init_password_database(self.db)
     
     def new_user(self, username, password):
         ph = PasswordHasher()
