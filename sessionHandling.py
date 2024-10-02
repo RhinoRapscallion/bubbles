@@ -86,7 +86,6 @@ class sessionHandler():
         
 
 if __name__ == "__main__":
-    init_password_database('usertest.db')
     sh = sessionHandler("TEST_SECRET", "usertest.db")
     print("Testing make New User")
 
